@@ -1,3 +1,5 @@
+*.exe
+*.bin
 /.cph
 /Bit_Manipulation.exe
 /Circular_Linked_List.exe
