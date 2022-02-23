@@ -6,24 +6,20 @@ vector<int> BFS(int N, vector<int> adj[])
     vector<int> ans;
     bool vis[N + 1] = {0};
 
-    for (int i = 1; i <= N; i++)
-    {
-        if (vis[i] == 0)
-        {
+    for (int i = 1; i <= N; i++){
+        if (vis[i] == 0){
+            //Using Queue DS for BFS Traversal in Graph
             queue<int> q;
             q.push(i);
 
             vis[i] = 1;
-            while (!q.empty())
-            {
+            while (!q.empty()){
                 int node = q.front();
                 ans.push_back(node);
                 q.pop();
 
-                for (int j = 0; j < adj[node].size(); j++)
-                {
-                    if (vis[adj[node][j]] == 0)
-                    {
+                for (int j = 0; j < adj[node].size(); j++){
+                    if (vis[adj[node][j]] == 0){
                         q.push(adj[node][j]);
                         vis[adj[node][j]] = 1;
                     }
@@ -31,7 +27,6 @@ vector<int> BFS(int N, vector<int> adj[])
             }
         }
     }
-
     return ans;
 }
 

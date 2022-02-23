@@ -1,6 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+int BFS(int N, vector<int> adj[])
+{
+    int count=0;
+    bool vis[N + 1] = {0};
+
+    for (int i = 1; i <= N; i++){
+        if (vis[i] == 0){
+            //Counting number of times code gets inside the if statement.
+            count++;
+            
+            //Using Queue DS for BFS Traversal in Graph
+            queue<int> q;
+            q.push(i);
+
+            vis[i] = 1;
+            while (!q.empty()){
+                int node = q.front();
+                q.pop();
+
+                for (int j = 0; j < adj[node].size(); j++){
+                    if (vis[adj[node][j]] == 0){
+                        q.push(adj[node][j]);
+                        vis[adj[node][j]] = 1;
+                    }
+                }
+            }
+        }
+    }
+    return count;
+}
+
 int main(){
     int N, E;
     cin>>N>>E;
@@ -15,14 +46,9 @@ int main(){
         adj[v].push_back(u);
     }
 
-    bool vis[N+1]={0};
-    int count=0;
-    for(int i=1; i<=N; i++){
-        if(vis[i]==0){
-            //Apply BFS or DFS
-            count++;
-        }
-    }
+    int count = BFS(N, adj);
+    //Apply BFS or DFS
+
     cout<<count;
 }
 /*Input
@@ -34,4 +60,6 @@ int main(){
 2 9
 5 7
 7 10
+
+Ans- 3 Components
 */
