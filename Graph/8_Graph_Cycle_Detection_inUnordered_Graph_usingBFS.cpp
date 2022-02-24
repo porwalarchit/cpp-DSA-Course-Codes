@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool checkCycle(int i, vector<int> adj[], vector<bool> &vis, int comp){
+bool checkCycle(int i, vector<int> adj[], vector<bool> &vis){
     queue<pair<int, int>> q;
     q.push({i, -1});
     vis[i] = 1;
@@ -25,12 +25,10 @@ bool checkCycle(int i, vector<int> adj[], vector<bool> &vis, int comp){
 }
 
 bool isCycle(int N, vector<int> adj[]){
-    int component = 0;
     vector<bool> vis(N + 1, 0);
     for (int i = 0; i <= N; i++){
         if (vis[i] == 0){
-            component++;
-            if (checkCycle(i, adj, vis, component)){
+            if (checkCycle(i, adj, vis)){
                 return true;
             }
         }
