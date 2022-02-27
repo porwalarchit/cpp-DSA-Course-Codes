@@ -42,3 +42,20 @@ int main(){
     else
         cout<<"No Cycle Exists";
 }
+
+/* Inputs
+
+Cycle Exists Case:
+5 5
+1 2
+2 3
+3 4
+4 5
+2 5
+
+No Cycle Exists Case:
+4 3
+1 2
+2 3
+3 4
+*/
